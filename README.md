@@ -1,36 +1,34 @@
-# Serverless architecture
+# サーバーレス アーキテクチャ
 
-Contoso is rapidly expanding their toll booth management business to operate in a much larger area. As this is not their primary business, which is online payment services, they are struggling with scaling up to meet the upcoming demand to extract license plate information from a large number of new tollbooths, using photos of vehicles uploaded to cloud storage. Currently, they have a manual process where they send batches of photos to a 3rd-party who manually transcodes the license plates to CSV files that they send back to Contoso to upload to their online processing system. 
-
-They want to automate this process in a way that is cost effective and scalable. They believe serverless is the best route for them, but do not have the expertise to build the solution.
+コントソ有限会社では、大規模な料金所の管理サービスビジネスが急速に伸びています。現在、料金所を通過する車両のナンバープレートを自動で解析するという機能の要望が高まっています。大量の車両のナンバープレート写真を高速に処理して保存するソリューションの開発は、本業のオンライン決済ビジネスとは性質が異なるため、苦慮しています。現在はアウトソースによる手動の写真解析を行っており、解析結果は CSV ファイルとしてコントソ社に送られ、そこからオンライン処理システムに都度アップロードしています。コントソはこれらのプロセスをスケーラブルで費用効果の高い方法で、自動化したいと考えており、サーバレス技術が候補に挙がっていますが、詳しいエンジニアがいないため、実装できないでいます。
 
 June 2019
 
-## Target Audience
+## 対象者
 
-Application developers
+アプリケーション開発者
 
-## Abstracts
+## 概要
 
-### Workshop
+### ワークショップ
 
-In this workshop, you will work as a group to setup and configure a serverless architecture within Azure using a combination of Azure Functions, Logic Apps, Event Grid, Cosmos DB, and Azure Storage. The focus is on removing server management from the equation, breaking down the solution into smaller components that are individually scalable, and allowing the customer to only pay for what they use.
+このワークショップでは、チームの一員としてサーバレスアーキテクチャで利用する Azure Functions、Logic Apps、Event Grid、Cosmos DB、Azure ストレージなど Azure　の様々なサービスを作成、構成します。目的はサーバーの管理を無くし、ソリューションを、モジュール単位でスケールやデプロイができるよう細かく分解することであり、使用した分だけ支払う Pay-as-you-go モデルに適用させることです。
 
-At the end of this workshop, you will have learned how to use a series of Azure Functions that independently scale and break down business logic to discrete components, use computer vision algorithms within an Azure Function to accurately detect license plates in car images at scale, provision and use Cosmos DB as a highly available NoSQL data store for processed data, create a Logic App that contains a workflow to export processed license plates and conditionally send alerts based on successful or unsuccessful operation, use App Insights to monitor the serverless topology, observing how well the solution scales when under load, and implement a Continuous Deployment DevOps process to automatically publish changes to Function Apps.
+ワークショップを通じて、例えばビジネスロジックの一部であるナンバープレートの解析を、Azure Cognitive Service の 1 つである Computer Vision OCR を使って処理する Azure Functions 単体でスケールさせたり、高可用性を兼ね備えた NoSQL ソリューションである Cosmos DB を作成してデータを処理したり、Logic Apps により解析されたナンバープレートのデータをエクスポートしたり、または状況によってメールでのアラートを通知する方法を学びます。システムの監視には Application Insights を活用する方法を学べるほか、継続的なデプロイを GitHub から構成する方法も学びます。
 
-### Whiteboard Design Session
+### ホワイトボード デザインセッション
 
 In this whiteboard design session, you will work with a group to design a solution for processing vehicle photos as they are uploaded to a storage account, using serverless technologies on Azure. The license plate data needs to be extracted and stored in a highly available NoSQL data store for exporting. The data export process will be orchestrated by a serverless Azure component that coordinates exporting new license plate data to file storage and sending notifications as needed. You will also configure a Continuous Deployment process to automatically publish new changes to Function Apps. Finally, the entire processing pipeline will need to be monitored, with particular attention paid to components scaling to meet processing demand.
 
 At the end of this whiteboard design session, you will have gained insight on how best to take advantage of the new serverless wave by designing a highly scalable and cost-effective solution that requires very little code and virtually no infrastructure, compared to traditional hosted web applications and services.
 
-### Hands-on Lab
+### ハンズオン ラボ
 
-In this hand-on lab, you will be challenged to implement an end-to-end scenario using a supplied sample that is based on Microsoft Azure Functions, Azure Cosmos DB, Event Grid, and related services. The scenario will include implementing compute, storage, workflows, and monitoring, using various components of Microsoft Azure. The hands-on lab can be implemented on your own, but it is highly recommended to pair up with other members at the lab to model a real-world experience and to allow each member to share their expertise for the overall solution.
+ハンズオンラボでは、Microsoft Azure Functions、Azure Cosmos DB、Event Grid および関連サービスを利用した、エンドツーエンドのソリューション構築にチャレンジします。シナリオは、コンピュート、ストレージ、ワークフローや監視など、様々な Microsoft Azure のサービスを利用します。このハンズオンラボは一人でも実施できますが、実際の状況に近くなるよう、複数人での作業を強く推奨します。お互いの専門性を活用して学びあうことができます。
 
-At the end of the hands-on-lab, you will have confidence in designing, developing, and monitoring a serverless solution that is resilient, scalable, and cost-effective.
+ハンズオンラボを完了する頃には、回復性が高くスケールし、コスト効果の高いサーバーレスソリューションの設計や構築、監視の実装に自信が持てることでしょう。
 
-## Azure services and related products
+## Azure サービスおよび関連製品
 
 - Azure Functions
 - Azure Cognitive Services
@@ -39,15 +37,15 @@ At the end of the hands-on-lab, you will have confidence in designing, developin
 - Azure Cosmos DB
 - Logic Apps
 
-## Azure solution
+## Azure ソリューション
 
-Cloud-Native Apps
+クラウドネイティブアプリケーション
 
-## Related references, resources, and material
+## 参考情報およびマテリアル
 
-- [Serverless Web Application Reference Architecture](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/serverless/web-app)
-- [Serverless event processing using Azure Functions Reference Architecture](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/serverless/event-processing)
-- [MCW](https://github.com/Microsoft/MCW) 
+- [Azure 上のサーバーレス Web アプリケーション](https://docs.microsoft.com/ja-jp/azure/architecture/reference-architectures/serverless/web-app)
+- [Azure Functions を使用したサーバーレスなイベント処理](https://docs.microsoft.com/ja-jp/azure/architecture/reference-architectures/serverless/event-processing)
+- [Microsoft Cloud Workshop (MCW)](https://github.com/Microsoft/MCW) 
 
 ## Help & Support
 
