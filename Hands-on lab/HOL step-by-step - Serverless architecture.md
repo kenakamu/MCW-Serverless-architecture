@@ -31,7 +31,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [概要](#概要)
   - [ソリューションアーキテクチャ](#ソリューションアーキテクチャ)
   - [前提条件](#前提条件)
-  - [演習 1: Azure データ、ストレージ、サーバーレス環境のセットアップ](#演習-1-Azure-データ、ストレージ、サーバーレス環境のセットアップ)
+  - [演習 1: Azure データ、ストレージ、サーバーレス環境のセットアップ](#演習-1-azure-データストレージサーバーレス環境のセットアップ)
     - [参照情報](#参照情報)
     - [タスク 1: ストレージアカウントの作成](#タスク-1-ストレージアカウントの作成)
     - [タスク 2: Function Apps の作成](#タスク-2-function-apps-の作成)
@@ -528,7 +528,7 @@ await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 
     ![](media/processimage-eg-sub.png)
 
-演習 3: Azure ポータルから関数を作成
+## 演習 3: Azure ポータルから関数を作成
 
 **所要時間**: 45 分
 
@@ -769,7 +769,7 @@ module.exports = async function(context, eventGridEvent) {
 
 10. **保存**をクリック。
 
-演習 4: Application Insights で Function App を監視
+## 演習 4: Application Insights で Function App を監視
 
 **所要時間**: 45 分
 
@@ -981,7 +981,7 @@ SELECT VALUE COUNT(c.id) FROM c WHERE c.exported = false
 
     a. **名前**: **TollBoothLogic**
 
-    b. **リソースグループ**: ??? **ServerlessArchitecture**
+    b. **リソースグループ**: **ServerlessArchitecture**
 
     c. **場所**: 近い場所を指定
 
