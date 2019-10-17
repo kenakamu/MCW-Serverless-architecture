@@ -340,7 +340,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 2.  **+ リソースの作成** より **computer vision** で検索して **Computer Vision** をクリック。
 
-    ![]](media/image29.png 'Azure ポータル')
+    ![](media/image29.png 'Azure ポータル')
 
 3.  **作成**をクリック
 
@@ -504,7 +504,7 @@ await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 
     ![](media/image42.png 'TollBoothFunctionApp ブレード')
 
-10.  次に Event Grid サブスクリプションを作成。**ProcessImage** 関数を開き **Event Grid サブスクリプションの追加**をクリック。
+10. 次に Event Grid サブスクリプションを作成。**ProcessImage** 関数を開き **Event Grid サブスクリプションの追加**をクリック。
 
     ![](media/processimage-add-eg-sub.png 'ProcessImage 関数')
 
@@ -1216,7 +1216,7 @@ await blob.UploadFromStreamAsync(stream);
 
 2.  **全般**の**有効**をクリック。
 
-    ![](media/image113.png 'TollBoothLogic ブレード
+    ![](media/image113.png 'TollBoothLogic ブレード')
 
 3.  **トリガーの実行**より **Recurrence** をクリックする。
 
@@ -1232,7 +1232,7 @@ await blob.UploadFromStreamAsync(stream);
 
 2.  **Blob service** メニューの**コンテナー**をクリック。
 
-    ![.](media/image116.png 'Blob service')
+    ![](media/image116.png 'Blob service')
 
 3.  **export** コンテナを選択。
 
@@ -1242,7 +1242,7 @@ await blob.UploadFromStreamAsync(stream);
     
     ![](media/blob-download.png 'Blob コンテナー')
 
-5? CSV は以下のようなデータを含んでいる。
+5. CSV は以下のようなデータを含んでいる。
 
     ![](media/csv.png 'CSV file')
 
