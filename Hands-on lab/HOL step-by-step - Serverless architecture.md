@@ -838,7 +838,7 @@ Application Insights は Azure Function に統合でき、強力な監視機能�
 
 2.  **全般**より、**Application Insights** を選択。
 
-    > **メモ**: 表示さえるまで時間がかかる場合があります。
+    > **メモ**: 表示されるまで時間がかかる場合があります。
 
     ![](media/image64.png 'TollBoothFunctionApp ブレード')
 
@@ -872,7 +872,7 @@ Application Insights は Azure Function に統合でき、強力な監視機能�
 
     ![](media/image70.png 'ライブメトリックスストリーム')
 
-12. 現在の近祖ソールを閉じて、再度 `UploadImages` をデバッグ実行。今度は 2 を選択。これで写真が 1000 枚アップロードされる。
+12. 現在のコンソールを閉じて、再度 `UploadImages` をデバッグ実行。今度は 2 を選択。これで写真が 1000 枚アップロードされる。
 
     ![](media/image71.png 'コンソール')
 
