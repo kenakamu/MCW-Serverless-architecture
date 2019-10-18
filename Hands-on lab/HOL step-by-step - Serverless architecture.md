@@ -31,7 +31,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [概要](#概要)
   - [ソリューションアーキテクチャ](#ソリューションアーキテクチャ)
   - [前提条件](#前提条件)
-  - [演習 1: Azure データ、ストレージ、サーバーレス環境のセットアップ](#演習-1-Azure-データ、ストレージ、サーバーレス環境のセットアップ)
+  - [演習 1: Azure データ、ストレージ、サーバーレス環境のセットアップ](#演習-1-azure-データストレージサーバーレス環境のセットアップ)
     - [参照情報](#参照情報)
     - [タスク 1: ストレージアカウントの作成](#タスク-1-ストレージアカウントの作成)
     - [タスク 2: Function Apps の作成](#タスク-2-function-apps-の作成)
@@ -340,7 +340,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 2.  **+ リソースの作成** より **computer vision** で検索して **Computer Vision** をクリック。
 
-    ![]](media/image29.png 'Azure ポータル')
+    ![](media/image29.png 'Azure ポータル')
 
 3.  **作成**をクリック
 
@@ -504,7 +504,7 @@ await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 
     ![](media/image42.png 'TollBoothFunctionApp ブレード')
 
-10.  次に Event Grid サブスクリプションを作成。**ProcessImage** 関数を開き **Event Grid サブスクリプションの追加**をクリック。
+10. 次に Event Grid サブスクリプションを作成。**ProcessImage** 関数を開き **Event Grid サブスクリプションの追加**をクリック。
 
     ![](media/processimage-add-eg-sub.png 'ProcessImage 関数')
 
@@ -528,7 +528,7 @@ await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 
     ![](media/processimage-eg-sub.png)
 
-演習 3: Azure ポータルから関数を作成
+## 演習 3: Azure ポータルから関数を作成
 
 **所要時間**: 45 分
 
@@ -769,7 +769,7 @@ module.exports = async function(context, eventGridEvent) {
 
 10. **保存**をクリック。
 
-演習 4: Application Insights で Function App を監視
+## 演習 4: Application Insights で Function App を監視
 
 **所要時間**: 45 分
 
@@ -838,7 +838,7 @@ Application Insights は Azure Function に統合でき、強力な監視機能�
 
 2.  **全般**より、**Application Insights** を選択。
 
-    > **メモ**: 表示さえるまで時間がかかる場合があります。
+    > **メモ**: 表示されるまで時間がかかる場合があります。
 
     ![](media/image64.png 'TollBoothFunctionApp ブレード')
 
@@ -872,7 +872,7 @@ Application Insights は Azure Function に統合でき、強力な監視機能�
 
     ![](media/image70.png 'ライブメトリックスストリーム')
 
-12. 現在の近祖ソールを閉じて、再度 `UploadImages` をデバッグ実行。今度は 2 を選択。これで写真が 1000 枚アップロードされる。
+12. 現在のコンソールを閉じて、再度 `UploadImages` をデバッグ実行。今度は 2 を選択。これで写真が 1000 枚アップロードされる。
 
     ![](media/image71.png 'コンソール')
 
@@ -981,7 +981,7 @@ SELECT VALUE COUNT(c.id) FROM c WHERE c.exported = false
 
     a. **名前**: **TollBoothLogic**
 
-    b. **リソースグループ**: ??? **ServerlessArchitecture**
+    b. **リソースグループ**: **ServerlessArchitecture**
 
     c. **場所**: 近い場所を指定
 
@@ -1216,7 +1216,7 @@ await blob.UploadFromStreamAsync(stream);
 
 2.  **全般**の**有効**をクリック。
 
-    ![](media/image113.png 'TollBoothLogic ブレード
+    ![](media/image113.png 'TollBoothLogic ブレード')
 
 3.  **トリガーの実行**より **Recurrence** をクリックする。
 
@@ -1232,7 +1232,7 @@ await blob.UploadFromStreamAsync(stream);
 
 2.  **Blob service** メニューの**コンテナー**をクリック。
 
-    ![.](media/image116.png 'Blob service')
+    ![](media/image116.png 'Blob service')
 
 3.  **export** コンテナを選択。
 
@@ -1242,7 +1242,7 @@ await blob.UploadFromStreamAsync(stream);
     
     ![](media/blob-download.png 'Blob コンテナー')
 
-5? CSV は以下のようなデータを含んでいる。
+5. CSV は以下のようなデータを含んでいる。
 
     ![](media/csv.png 'CSV file')
 
