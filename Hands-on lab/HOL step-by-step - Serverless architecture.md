@@ -66,10 +66,11 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [タスク 1: Logic App の作成](#タスク-1-Logic-App-の作成)
   - [演習 7: Function App で継続的なデプロイを構成](#演習-7-Function-App-で継続的なデプロイを構成)
     - [参照情報](#参照情報-6)
-    - [タスク 1: GitHub レポジトリの作成](#タスク-1-GitHub-レポジトリの作成)
-    - [タスク 2: Visual Studio に GitHub レポジトリの追加](#タスク-2-Visual-Studio-に-GitHub-レポジトリの追加)
-    - [タスク 3: Function App に GitHub からの継続的なデプロイを構成](#タスク-3-Function-App-に-GitHub-からの継続的なデプロイを構成)
-    - [タスク 4: ExportLicensePlates の最新コードチェックインをトリガーに GitHub からデプロイ](#タスク-4-ExportLicensePlates-の最新コードチェックインをトリガーに-GitHub-からデプロイ)
+    - [タスク 1: アプリケーション設定の変更](#タスク-1-アプリケーション設定の変更)
+    - [タスク 2: GitHub レポジトリの作成](#タスク-2-GitHub-レポジトリの作成)
+    - [タスク 3: Visual Studio に GitHub レポジトリの追加](#タスク-3-Visual-Studio-に-GitHub-レポジトリの追加)
+    - [タスク 4: Function App に GitHub からの継続的なデプロイを構成](#タスク-4-Function-App-に-GitHub-からの継続的なデプロイを構成)
+    - [タスク 5: ExportLicensePlates の最新コードチェックインをトリガーに GitHub からデプロイ](#タスク-5-ExportLicensePlates-の最新コードチェックインをトリガーに-GitHub-からデプロイ)
   - [演習 8: ワークフローを再実行してデータエクスポートの確認](#演習-8-ワークフローを再実行してデータエクスポートの確認)
     - [タスク 1: Logic App の再開](#タスク-1-Logic-App-の再開)
     - [タスク 2: エクスポートされた CSV の確認](#タスク-2-エクスポートされた-CSV-の確認)
@@ -164,7 +165,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 7.  メモ帳などに保存。
 
-8.  **Blob Service** メニューから **BLOB** を選択。**+ コンテナー**をクリックして、**名前** に **images** を指定、**パブリック アクセスレベル**は**プライベート (匿名アクセスはありません)** を選択して **OK** をクリック。
+8.  **Blob Service** メニューから **コンテナー** を選択。**+ コンテナー**をクリックして、**名前** に **images** を指定、**パブリック アクセスレベル**は**プライベート (匿名アクセスはありません)** を選択して **OK** をクリック。
 
     ![](media/image16.png '新しいコンテナー')
 
@@ -182,23 +183,25 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 3.  **作成**ボタンをクリック。
 
-4.  **関数アプリ**画面で以下を指定:
+4.  **Function App (プレビュー)**画面で以下を指定:
 
     a. **リソース グループ**: **ServerlessArchitecture**
 
-    b. **名前**: **TollBoothFunctionApp** を含むグローバルで一意のものを指定
+    b. **関数アプリ名**: **TollBoothFunctionApp** を含むグローバルで一意のものを指定
 
-    c. **ランタイム スタック**: **.NET Core**
+    c. **公開**: **コード**
 
-    d. **地域**: 近い地域を選択。**次へ:ホスト中>** をクリック
+    d. **ランタイム スタック**: **.NET Core**
 
-    e. **ストレージ アカウント**: 新規作成または既存のものを選択
+    e. **地域**: 近い地域を選択。**次へ:ホスト中>** をクリック
 
-    f. **オペレーティング システム: **Windows**
+    f. **ストレージ アカウント**: 新規作成または既存のものを選択
 
-    g. **プランの種類**: **従量課金プラン**を選択。**次へ:監視>**をクリック。
+    g. **オペレーティング システム: **Windows**
 
-    h. **Application Insights を有効にする**: **いいえ** (後程設定する)
+    h. **プランの種類**: **従量課金プラン**を選択。**次へ:監視>**をクリック。
+
+    i. **Application Insights を有効にする**: **いいえ** (後程設定する)
 
 5.  **確認と作成**画面に移動して、**作成**をクリック。
 
@@ -206,23 +209,25 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 6.  2 つ目の Function App も作成。
 
-7.  **関数アプリ**画面で以下を指定:
+7.  **Function App (プレビュー)**画面で以下を指定:
 
     a.**リソース グループ**: **ServerlessArchitecture**
 
-    b. **名前**: **TollBoothEvents** を含むグローバルで一意のものを指定
+    b. **関数アプリ名**: **TollBoothEvents** を含むグローバルで一意のものを指定
 
-    c. **ランタイム スタック**: **Node.js**
+    c. **公開**: **コード**
 
-    d. **地域**: 近い地域を選択。**次へ:ホスト中>** をクリック
+    d. **ランタイム スタック**: **Node.js**
 
-    e. **ストレージ アカウント**: 新規作成または既存のものを選択
+    e. **地域**: 近い地域を選択。**次へ:ホスト中>** をクリック
 
-    f. **オペレーティング システム: **Windows**
+    f. **ストレージ アカウント**: 新規作成または既存のものを選択
 
-    g. **プランの種類**: **従量課金プラン**を選択。**次へ:監視>**をクリック。
+    g. **オペレーティング システム: **Windows**
 
-    h. **Application Insights を有効にする**: **いいえ** (後程設定する)
+    h. **プランの種類**: **従量課金プラン**を選択。**次へ:監視>**をクリック。
+
+    i. **Application Insights を有効にする**: **いいえ** (後程設定する)
 
 8.  **確認と作成**画面に移動して、**作成**をクリック。
 
@@ -240,7 +245,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 4.  **トピックの作成**画面で以下を指定:
 
-    a. **名前**: **TollboothEventGrid**
+    a. **名前**: **TollboothEventGrid** を含むグローバルで一意のものを指定
 
     b. **リソース グループ**: **ServerlessArchitecture**
 
@@ -262,7 +267,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 9.  **Key 1** の値をメモ帳などに保存。
 
-    ![](media/image22.png 'TollBoothTopic - ?????? ????')
+    ![](media/image22.png 'TollBoothTopic - ブレード')
 
 ### タスク 4: Azure Cosmos DB の作成
 
@@ -425,17 +430,15 @@ Visual Studio の Azure Function 用ツールを使って開発した関数を�
 
 Starter プロジェクトには、いくつか実装する必要のある TODO があります。このタスクでは ProcessImage プロジェクトにある FindLicensePlateText クラスで Computer Vision API を呼び出し、SendToEventGrid クラスが結果を Event Grid にカスタムイベントとして送信する TODO を完成させます。
 
-> **メモ**: ソリューションに含まれる Nuget のバージョンを上げると意図せぬ問題が起こる可能性があります。
-
 1.  **TollBooth** プロジェクト(/hands-on-lab/starts/TollBooth/TollBooth.sln) を Visual Studio で開く。
 
 2.  **表示**から**タスク一覧**を選択。
 
-    ![](media/image37.png 'Visual Studio ????')
+    ![](media/image37.png 'Visual Studio メニュー')
 
 3.  TODO の一覧と説明が表示される。
 
-    ![](media/image38.png 'TODO ???')
+    ![](media/image38.png 'TODO タスク')
 
 4.  **ProcessImage.cs** ファイルを開き、Run メソッドの `FunctionName` 属性の値が `ProcessImage` であることを確認。この属性が関数名として認識され、Event Grid からの HTTP 要求で起動される。後の手順で Blob のオブジェクト作成でトリガーされるサブスクリプションを作成。その結果 blob にオブジェクトが作成されると、オブジェクトの URL 情報を含んだイベントがエンドポイントに渡され、関数内で利用できるようになる。
 
@@ -448,7 +451,7 @@ licensePlateText = await new FindLicensePlateText(log, _client).GetLicensePlate(
 
 6.  **FindLicensePlateText.cs** を開く。このクラスは Computer Vision API の機能である OCR を使ってナンバープレートの情報を読み取る。また [Polly](https://github.com/App-vNext/Polly) を使った回復パターン (Resiliency Pattern) を実装している。Polly はオープンソースの .NET ライブラリで通信エラーのハンドル処理を行う。回復パターンを実装することで、Computer Vision API が遅延したり停止している場合、それ以降の処理に問題がでないように処理することができる。
 
-7.  TODO 2 に以下のコードを差し込む。
+7.  TODO 2 のコードを以下と差し替え。
 
 ```csharp
 // TODO 2: Populate the below two variables with the correct AppSettings properties.
@@ -468,6 +471,12 @@ await Send("savePlateData", "TollBooth/CustomerService", data);
 await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 ```
 
+10. プロジェクトを右クリックして **NuGet パッケージの管理**をクリック。更新プログラムを適用。
+
+![](media/vs-update-nuget.png 'ソリューションエクスプローラー')
+
+11. プロジェクトをビルドしてエラーがないことを確認。
+
 > **メモ**: その他の TODO は後程実装する
 
 ### タスク 3: Visual Studio から Function Apps を発行
@@ -480,9 +489,9 @@ await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 
     ![](media/image39.png 'ソリューションエクスプローラー')
 
-3.  **Azure Function の従量課金制プラン**を選択し、**既存のものを選択**が選ばれている状態で、**発行**をクリック。
+3.  **Azure Function の従量課金制プラン**を選択し、**既存のものを選択**が選ばれている状態で、**プロファイルの作成**をクリック。
 
-    ![](media/vs-publish-function.png '???????')
+    ![](media/vs-publish-function.png '発行先を選択')
 
 > **メモ**: 発行機能が存在しない場合、Visual Studio を更新してください。
 
@@ -494,7 +503,10 @@ await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 
     > **メモ**: Azure の Function App バージョンを更新するプロンプトが出た場合、ウィザードに従う。
 
-6.  発行が完了するまで待機。
+6.  **発行**をクリックして、完了するまで待機。
+
+    > **メモ**: 発行でエラーが出て失敗する場合、Visual Studio を一旦再起動してください。
+
 
 7.  [Azure ポータル](http://portal.azure.com) にログイン。
 
@@ -547,9 +559,9 @@ await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 
 1.  [Azure ポータル](http://portal.azure.com) にログイン。
 
-2.  **ServerlessArchitecture** リソースグループで **TollBoothEvent** を含む Function App を開く。
+2.  **ServerlessArchitecture** リソースグループで **TollBoothEvents** を含む Function App を開く。
 
-3.  **+ 新しい関数** をクリック。
+3.  **関数の右にある +** をクリック。
 
     ![](media/image43.png 'TollBoothEvents ブレード')
 
@@ -659,9 +671,9 @@ module.exports = function(context, eventGridEvent) {
 
 このタスクでは、ナンバープレートの読み取りに失敗した場合、Event Grid から通知される写真の情報を Cosmos DB に書き込む関数を作成します。
 
-1.  **関数**の画面より **+ 新しいい関数**をクリック。
+1.  **関数**の画面より **+ 新しい関数**をクリック。
 
-    ![](media/image43.png 'TollBoothEvents ブレード')
+    ![](media/image43-2.png 'TollBoothEvents ブレード')
 
 2.  **event grid** で検索して、**Azure Event Grid trigger** を選択。
  
@@ -691,7 +703,7 @@ module.exports = async function(context, eventGridEvent) {
 
 ### タスク 5: QueuePlateForManualCheckup 関数に Event Grid サブスクリプションを追加
 
-このタスクでは QueuePlateForManualCheckup に Event Grid サスペンションを追加し、 queuePlateForManualCheckup カスタムイベントを受け取れるようにします。
+このタスクでは QueuePlateForManualCheckup に Event Grid サブスクリプションを追加し、 queuePlateForManualCheckup カスタムイベントを受け取れるようにします。
 
 1.  QueuePlateForManualCheckup 関数で **Event Grid サブスクリプションの追加**をクリック。
 
@@ -725,7 +737,7 @@ module.exports = async function(context, eventGridEvent) {
 
 2.  出力メニューにある **+ 新しい出力** から **Azure Cosmos DB** をクリックして、**選択**をクリック
 
-    ![](media/image54.png?'?????')
+    ![](media/image54.png '出力')
 
 3.  **Azure Cosmos DB アウトプットフォーム**で以下を設定:
    
@@ -854,7 +866,7 @@ Application Insights は Azure Function に統合でき、強力な監視機能�
 
 6.  **App.config** を開く。
 
-7.  **blobStorageConnection** にストレージアカウントの接続文字列を張り付け
+7.  **blobStorageConnection** にストレージアカウントの接続文字列を張り付け。
 
     ![](media/image67.png 'App.config 画面')
 
@@ -947,7 +959,7 @@ Application Insights は Azure Function に統合でき、強力な監視機能�
 8.  以下のクエリを張り付けて実行。
 
 ```sql
-SELECT VALUE COUNT(c.id) FROM c WHERE c.exported = false
+SELECT VALUE COUNT(c) FROM c WHERE c.exported = false
 ```
 
 9.  クエリの結果、ここでは 309 件がエクスポート対象であることがわかる。
@@ -1072,7 +1084,19 @@ SELECT VALUE COUNT(c.id) FROM c WHERE c.exported = false
 | 新しいリポジトリの作成 | https://help.github.com/ja/articles/creating-a-new-repository |
 | Azure Functions の継続的なデプロイ | https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-continuous-deployment |
 
-### タスク 1: GitHub レポジトリの作成
+### タスク 1: アプリケーション設定の変更
+
+GitHub から CI/CD を構成する場合、既存のアプリケーション設定を変更する必要がある。
+
+1. Azure ポータルで **TollBoothFunctionApp** から始まる Function App を開く。
+
+1. **概要**から**構成**をクリック。
+
+1.  **アプリケーション設定** で **WEBSITE_RUN_FROM_PACKAGE** の値を **0** に変更し **OK** 、**保存** をクリック。
+
+    ![](media/functionapp-disable-runfrompackage.png)
+
+### タスク 2: GitHub レポジトリの作成
 
 1.  [GitHub](https://github.com) に自身の GitHub アカウントでログイン。
 
@@ -1090,7 +1114,7 @@ SELECT VALUE COUNT(c.id) FROM c WHERE c.exported = false
 
     ![](media/image100.png 'Repository 画面')
 
-### タスク 2: Visual Studio に GitHub レポジトリの追加
+### タスク 3: Visual Studio に GitHub レポジトリの追加
 
 1.  Visual Studio で **TollBooth** プロジェクトを開く。
 
@@ -1116,7 +1140,7 @@ SELECT VALUE COUNT(c.id) FROM c WHERE c.exported = false
 
     ![](media/image105.png 'GitHub Repository 画面')
 
-### タスク 3: Function App に GitHub からの継続的なデプロイを構成
+### タスク 4: Function App に GitHub からの継続的なデプロイを構成
 
 1.  Azure ポータルで **TollBoothFunctionApp** から始まる Function App を開く。
 
@@ -1144,7 +1168,7 @@ SELECT VALUE COUNT(c.id) FROM c WHERE c.exported = false
 
 9.  継続的なデプロイを構成すると、ソースコードの変更は Function App にコピーされ、デプロイが実行される。その後のファイル更新でも都度デプロイがトリガーされる。
 
-### タスク 4: ExportLicensePlates の最新コードチェックインをトリガーに GitHub からデプロイ
+### タスク 5: ExportLicensePlates の最新コードチェックインをトリガーに GitHub からデプロイ
 
 1.  Visual Studio で **TollBooth** を開く。
 

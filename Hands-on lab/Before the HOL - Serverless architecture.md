@@ -68,7 +68,7 @@ Visual Studio Community 2019 の Azure 開発ワークロードがインスト�
 
 このタスクでは `Visual Studio Community 2019 on Windows Server 2019 (x64)` または Windows 10 の仮想マシンを作成します。MSDN サブスクリプションの場合、Visual Studio VM を作成できるバージョンか確認してください。
 
-    ![](images/Setup/image3.png 'Azure ????')
+![](images/Setup/image3.png 'Azure')
 
 1. **+リソースの作成**をクリック。
 
