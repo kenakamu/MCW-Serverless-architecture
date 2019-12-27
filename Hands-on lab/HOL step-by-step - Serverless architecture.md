@@ -471,9 +471,11 @@ await Send("savePlateData", "TollBooth/CustomerService", data);
 await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
 ```
 
-10. プロジェクトを右クリックして **NuGet パッケージの管理**をクリック。更新プログラムを適用。
+~~10. プロジェクトを右クリックして **NuGet パッケージの管理**をクリック。更新プログラムを適用。~~
 
-![](media/vs-update-nuget.png 'ソリューションエクスプローラー')
+<!-- ![](media/vs-update-nuget.png 'ソリューションエクスプローラー') -->
+
+> **メモ**: 2019年12月時点では、 Azure Functions の Runtime バージョンは `~2` が規定であり、 `Microsoft.NET.Sdk.Functions` も 1.x 系のままにしておく必要があります。パッケージ更新をする場合は、ご留意ください。
 
 11. プロジェクトをビルドしてエラーがないことを確認。
 
